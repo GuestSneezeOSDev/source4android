@@ -62,8 +62,26 @@ to
 	IE_FingerUp, // Touch Support
 	IE_FingerMotion, // Touch Support
 ```
+6. in vgui_int.cpp include touch.h and in line 133 add
+```cpp
+	touch_panel->Destroy();
+```
+then in line 147
+```cpp
+touch_panel->Create( toolParent );
+```
+then in line 213
+```
+touch_panel->Create( toolParent );
+```
+then in line 244
+```
+touch_panel->Destroy();
+```
 
-6. here are the touch.h files.
+in cdll_int.h add `virtual void IN_TouchEvent( int type, int fingerId, int x, int y ) = 0;`
+
+7. here are the touch files.
 touch.h:
 ```c
 #include "utllinkedlist.h"
