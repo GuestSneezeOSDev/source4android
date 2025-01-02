@@ -49,6 +49,16 @@ to
 ```cpp
 	if ( in_joystick.GetInt() || touch_enable.GetInt() )
 ```
+
+> [!IMPORTANT]
+> In InputEnums.h add the following under line 80
+
+```cpp
+	IE_FingerDown, // Touch Support
+	IE_FingerUp, // Touch Support
+	IE_FingerMotion, // Touch Support
+```
+
 6. here are the touch.h files.
 touch.h:
 ```c
