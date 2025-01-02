@@ -16,16 +16,20 @@ Source4android is a project which allows you to port you HL2, Portal, TF2, etc m
 ```cpp
 virtual void IN_TouchEvent( int type, int fingerId, int x, int y );
 ```
-In line 1044 add 	`gTouch.Init();`, Line 1422 rename `void CHLClient::ExtraMouseSample( float frametime, bool active )` to `void CHLClient::IN_TouchEvent( int type, int fingerId, int x, int y )`
-and add in the function
+In line 1044 add 	`gTouch.Init();`, Line 1422 right above `void CHLClient::ExtraMouseSample( float frametime, bool active )` add
 ```cpp
-if( enginevgui->IsGameUIVisible() )
+void CHLClient::IN_TouchEvent( int type, int fingerId, int x, int y )
+{
+	if( enginevgui->IsGameUIVisible() )
 		return;
+
 	touch_event_t ev;
+
 	ev.type = type;
 	ev.fingerid = fingerId;
 	ev.x = x;
 	ev.y = y;
+
 	gTouch.ProcessEvent( &ev );
 }
 ```
