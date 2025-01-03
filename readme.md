@@ -11,7 +11,11 @@ Source4android is a project which allows you to port you HL2, Portal, TF2, etc m
   <OutputPath>$(SolutionDir)bin\$(Configuration)\android\</OutputPath>
 </PropertyGroup>
 ```
-3. Make your vcxproj compile for shared library (`.so`)
+3. Make your vcxproj compile for shared library (`.so`). rename it from `.vcxproj` to `.vcxitems` and add somewhere in the beginning
+```xml
+    <HasSharedItems>true</HasSharedItems>
+```
+
 4. In `cdll_client_int.cpp` include `touch.h` and in line 732 delete `public` and under it Add the following code
 ```cpp
 virtual void IN_TouchEvent( int type, int fingerId, int x, int y );
