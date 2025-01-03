@@ -89,4 +89,7 @@ in cdll_int.h add `virtual void IN_TouchEvent( int type, int fingerId, int x, in
 - [touch.h](https://github.com/GuestSneezeOSDev/source4android/blob/main/src/game/client/touch.h)
 - [touch.cpp](https://github.com/GuestSneezeOSDev/source4android/blob/main/src/game/client/touch.cpp)
 # This Project is Licensed under MIT License (please credit me if you do use this project)
-[![ReadMeSupportPalestine](https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/banner-support.svg)](https://techforpalestine.org/learn-more)
+
+# Credits:
+- VS-ANDROID: Android support for visual studio
+- NILLERUSR: Touch support code.
