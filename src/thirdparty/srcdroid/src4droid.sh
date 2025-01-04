@@ -86,3 +86,4 @@ android_chrooted_install .libs/libjpeg.a
 cd ../
 
 cd src4droid/
+sleep 10
