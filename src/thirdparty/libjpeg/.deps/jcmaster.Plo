@@ -1,0 +1,101 @@
+jcmaster.lo: jcmaster.c jinclude.h jconfig.h \
+ /mnt/f/soft/android-ndk-r10e/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9/include/stddef.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/stdlib.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/sys/cdefs.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/sys/cdefs_elf.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/android/api-level.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/string.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/malloc.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/xlocale.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/alloca.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/strings.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/sys/types.h \
+ /mnt/f/soft/android-ndk-r10e/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9/include/stdint.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/stdint.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/machine/wchar_limits.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/linux/types.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm/types.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm-generic/types.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm-generic/int-ll64.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm/bitsperlong.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm-generic/bitsperlong.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/linux/posix_types.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/linux/stddef.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/linux/compiler.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm/posix_types.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm-generic/posix_types.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/sys/sysmacros.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/memory.h \
+ /mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/stdio.h \
+ /mnt/f/soft/android-ndk-r10e/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9/include/stdarg.h \
+ jpeglib.h jmorecfg.h jpegint.h jerror.h
+
+jinclude.h:
+
+jconfig.h:
+
+/mnt/f/soft/android-ndk-r10e/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9/include/stddef.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/stdlib.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/sys/cdefs.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/sys/cdefs_elf.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/android/api-level.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/string.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/malloc.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/xlocale.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/alloca.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/strings.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/sys/types.h:
+
+/mnt/f/soft/android-ndk-r10e/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9/include/stdint.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/stdint.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/machine/wchar_limits.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/linux/types.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm/types.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm-generic/types.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm-generic/int-ll64.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm/bitsperlong.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm-generic/bitsperlong.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/linux/posix_types.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/linux/stddef.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/linux/compiler.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm/posix_types.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/asm-generic/posix_types.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/sys/sysmacros.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/memory.h:
+
+/mnt/f/soft/android-ndk-r10e/platforms/android-21/arch-arm/usr/include/stdio.h:
+
+/mnt/f/soft/android-ndk-r10e/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9/include/stdarg.h:
+
+jpeglib.h:
+
+jmorecfg.h:
+
+jpegint.h:
+
+jerror.h:

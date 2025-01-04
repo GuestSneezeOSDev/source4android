@@ -1,0 +1,6 @@
+#!/bin/bash
+
+pushd `dirname $0`
+devtools/bin/vpc /hl2 +everything /mksln everything /android32
+./thirdparty/srcdroid/src4droid.sh
+popd
