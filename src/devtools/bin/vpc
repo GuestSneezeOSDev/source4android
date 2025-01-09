@@ -11,6 +11,9 @@ case $OS in
 "Linux")
 	BINNAME=vpc_linux
 	;;
+"Android")
+	BINNAME=vpc_linux # Use Linux VPC for now, because I dont have a source engine license yet.
+	;;
 *)
 	echo "Couldn't find appropriate VPC binary, fix the script."
 	exit -1
@@ -21,6 +24,8 @@ esac
 if [ $OS == "Darwin" ]; then
 	$SCRIPTPATH/$BINNAME $@
 elif [ $OS == "Linux" ]; then
+	$SCRIPTPATH/$BINNAME $@
+elif [ $OS == "Android" ]; then
 	$SCRIPTPATH/$BINNAME $@
 else
 	echo "Couldn't find appropriate VPC binary, fix the script."

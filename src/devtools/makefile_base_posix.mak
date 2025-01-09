@@ -260,13 +260,8 @@ endif
 
 
 ifeq ($(OS),Android)
-	# We should always specify -Wl,--build-id, as documented at:
-	# http://linux.die.net/man/1/ld and http://fedoraproject.org/wiki/Releases/FeatureBuildId.http://fedoraproject.org/wiki/Releases/FeatureBuildId
 	LDFLAGS += -Wl,--build-id
-	# Set USE_VALVE_BINDIR to build with /Steam/tools/linux in the /valve/bin path.
-	#  Dedicated server uses this.
 	ifeq ($(USE_VALVE_BINDIR),1)
-		# dedicated server flags
 		ifeq ($(TARGET_PLATFORM),android64)
 			VALVE_BINDIR = /valve/bin64/
 			MARCH_TARGET = arm
@@ -282,7 +277,7 @@ ifeq ($(OS),Android)
 				VALVE_BINDIR = /valve/steam-runtime/bin/
 			endif
 		endif
-		GCC_VER =
+		GCC_VER = 4.9
 		MARCH_TARGET = arm
 		STRIP_FLAGS = -x
 	endif

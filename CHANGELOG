@@ -1,1 +1,3 @@
 # VERSION 1.0
+- Added Support for building android builds on Linux because building on Windows is broken.
+- Updated vpc to use Linux when building Android.
