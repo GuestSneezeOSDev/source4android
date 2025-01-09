@@ -411,7 +411,7 @@ PRE_COMPILE_FILE =
 POST_COMPILE_FILE = 
 
 ifeq ($(BUILDING_MULTI_ARCH),1)
-	SINGLE_ARCH_CXXFLAGS=$(subst -arch x86_64,,$(CXXFLAGS))
+	SINGLE_ARCH_CXXFLAGS=$(subst -arch x86_64,arm,$(CXXFLAGS))
 	COMPILE_FILE = \
 		$(QUIET_PREFIX) \
 		echo "---- $(lastword $(subst /, ,$<)) as MULTIARCH----";\
