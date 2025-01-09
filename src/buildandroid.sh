@@ -42,14 +42,14 @@ if uname == Linux; then
     PATH=${NDK_DIR}/toolchains/${SRC4DROID_HOST}-${TOOLCHAIN_VERSION}/prebuilt/${BUILD}/bin:$PATH
 
     android_chrooted_install() {
-      cp $1 ${SRCDIR}/lib/public/android
+      cp $1 ../lib/public/android
     }
 
     android_chrooted_make() {
       make "$@" -j$(nproc --all) NDK=1 NDK_ABI=armeabi-v7a NDK_PATH=${NDK_DIR}
     }
 
-    cd ${SRCDIR}/thirdparty/
+    cd thirdparty/
 
     cd StubSteamAPI/
     android_chrooted_make
@@ -69,7 +69,7 @@ if uname == Linux; then
     android_chrooted_install .libs/libjpeg.a
     cd ../
 
-    cd ${SRCDIR}/
+    cd ../ # Do not use SRCDIR because it just breaks everything
     cp -r ~/.bashrc ~/.bashrc-replace
     echo "uname()
 {
@@ -77,7 +77,7 @@ if uname == Linux; then
 }" >> ~/.bashrc
 
     pushd `dirname $0`
-    devtools/bin/vpc /hl2 +everything /mksln everything
+    ${SRCDIR}/devtools/bin/vpc /hl2 +game /mksln game
     popd
     mv ~/.bashrc-replace ~/.bashrc
 else

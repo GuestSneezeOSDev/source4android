@@ -20,7 +20,9 @@ creating: source4android-main/src/thirdparty/libiconv-1.15/m4/
 source4android-main/src/thirdparty/libiconv-1.15/m4/libtool.m4:  write error (disk full?).  Continue? (y/n/^C)
 ```
 then you do not have enough diskspace. Clear some storage [Guide for Debian.](https://askubuntu.com/questions/5980/how-do-i-free-up-disk-space), [Guide for other distro's](https://unix.stackexchange.com/questions/774199/how-to-clean-up-a-linux-system-to-free-up-disk-space)
-# Crediting where credits are due.
+
+# Credits
 - GuestSneezeOSDev: Created most of the stuff used in the mod such as the build scripts
 - nillerusr: The touch support was used from his repository which uses leaked code so I will not be able to link it.
 - Valve: Source SDK 2013 base code.
+- XutaxKamay for the https://github.com/ValveSoftware/source-sdk-2013/pull/590 pull request which was used.

@@ -34,7 +34,7 @@ every surface must be divided into at least two patches each axis
 */
 
 CUtlVector<CPatch>		g_Patches;			
-CUtlVector<int>			g_FacePatches;		// contains all patches, children first
+CUtlVector<int>			g_FacePatches;		// constains all patches, children first
 CUtlVector<int>			faceParents;		// contains only root patches, use next parent to iterate
 CUtlVector<int>			clusterChildren;
 CUtlVector<Vector>		emitlight;
@@ -1305,7 +1305,7 @@ void WriteWorld (char *name, int iBump)
 	g_pFileSystem->Close( out );
 }
 
-void WriteRTEnv (char *name)
+void WriteRTEnv (const char *name)
 {
 	FileHandle_t out;
 
@@ -1758,7 +1758,7 @@ void RadWorld_Start()
 	{
 		// Remember the old lightmap vectors.
 		float oldLightmapVecs[MAX_MAP_TEXINFO][2][4];
-		for (i = 0; i < texinfo.Count(); i++)
+		for (i = 0; i < (unsigned)texinfo.Count(); i++)
 		{
 			for( int j=0; j < 2; j++ )
 			{
@@ -1770,7 +1770,7 @@ void RadWorld_Start()
 		}
 
 		// rescale luxels to be no denser than "luxeldensity"
-		for (i = 0; i < texinfo.Count(); i++)
+		for (i = 0; i < (unsigned)texinfo.Count(); i++)
 		{
 			texinfo_t	*tx = &texinfo[i];
 
@@ -2408,13 +2408,12 @@ int ParseCommandLine( int argc, char **argv, bool *onlydetail )
 		{
 			if ( ++i < argc )
 			{
-				int bounceParam = atoi (argv[i]);
-				if ( bounceParam < 0 )
+				numbounce = atoi (argv[i]);
+				if ( numbounce < 0 )
 				{
 					Warning("Error: expected non-negative value after '-bounce'\n" );
 					return 1;
 				}
-				numbounce = (unsigned)bounceParam;
 			}
 			else
 			{
