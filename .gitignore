@@ -1,0 +1,8 @@
+# Windows stuff.
+src/*.sln
+src*/*.vcxproj
+*.exe
+*.sln
+*.dll
+# Android/Linux stuff.
+*.so
