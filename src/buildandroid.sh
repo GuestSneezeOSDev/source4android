@@ -79,7 +79,7 @@ if uname == Linux; then
     pushd `dirname $0`
     devtools/bin/vpc /hl2 +everything /mksln everything
     popd
-mv ~/.bashrc-replace ~/.bashrc
+    mv ~/.bashrc-replace ~/.bashrc
 else
     echo "OS is unsupported."
     exit 1
