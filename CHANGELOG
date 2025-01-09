@@ -2,3 +2,4 @@
 - Added Support for building android builds on Linux because building on Windows is broken.
 - Updated vpc to use Linux when building Android.
 - Update makefile_base_posix.mak for native Android support.
+- Added Improvements for buildandroid.sh

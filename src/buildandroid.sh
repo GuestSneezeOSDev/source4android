@@ -1,5 +1,7 @@
 #!/bin/bash
 # COPYRIGHT SOURCE4DROID, ALL RIGHTS RESERVED
+# IF YOU PLAN ON USING SOURCE4DROID ON YOUR PROJECTS THEN 
+# YOU MUST COMPLY WITH THE MiT License AND CREDIT GUESTSNEEZEOSDEV!!!
 if uname == Linux && if uname == Termux; then
     cp -r ~/.bashrc ~/.bashrc-replace
     echo "uname()
@@ -12,11 +14,6 @@ if uname == Linux && if uname == Termux; then
     devtools/bin/vpc /hl2 +everything /mksln everything
     popd
 mv ~/.bashrc-replace ~/.bashrc
-elif uname == MINGW64_NT; then
-    echo "Windows is unsupported!!!"
+else
+    echo "OS is unsupported."
     exit 1
-elif uname == Darwin; then
-    echo "MacOS unsupported!!!"
-    exit 1
-elif uname == BSD; then
-    echo "BSD is unsupported!!!"
