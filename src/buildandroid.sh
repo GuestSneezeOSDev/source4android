@@ -84,3 +84,4 @@ if uname == Linux; then
 else
     echo "OS is unsupported."
     exit 1
+fi
