@@ -4,3 +4,4 @@
 - Update makefile_base_posix.mak for native Android support.
 - Added Improvements for buildandroid.sh
 - Merged the old src4droid.sh file in thirdparty with the new & improved buildandroid.sh
+- Linux ports of VBSP, VRAD, VVIS.
