@@ -69,7 +69,7 @@ if uname == Linux; then
     android_chrooted_install .libs/libjpeg.a
     cd ../
 
-    cd ../ # Do not use SRCDIR because it just breaks everything
+    cd ../ # Do not use SRCDIR because it just breaks everything.
     cp -r ~/.bashrc ~/.bashrc-replace
     echo "uname()
 {
@@ -77,7 +77,8 @@ if uname == Linux; then
 }" >> ~/.bashrc
 
     pushd `dirname $0`
-    ${SRCDIR}/devtools/bin/vpc /hl2 +game /mksln game
+    devtools/bin/vpc /hl2 +game /mksln game
+    #devtools/bin/vpc /hl2 /ANDROID64 +game /mksln game # This is broken iirc, so dont uncomment this.
     popd
     mv ~/.bashrc-replace ~/.bashrc
 else
