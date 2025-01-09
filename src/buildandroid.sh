@@ -70,15 +70,8 @@ if uname == Linux; then
     cd ../
 
     cd ../ # Do not use SRCDIR because it just breaks everything.
-    cp -r ~/.bashrc ~/.bashrc-replace
-    echo "uname()
-{
-    Android
-}" >> ~/.bashrc
-
     pushd `dirname $0`
-    devtools/bin/vpc /hl2 +game /mksln game
-    #devtools/bin/vpc /hl2 /ANDROID64 +game /mksln game # This is broken iirc, so dont uncomment this.
+    devtools/bin/vpc /hl2 +game /mksln game /ANDROID64
     popd
     mv ~/.bashrc-replace ~/.bashrc
 else
