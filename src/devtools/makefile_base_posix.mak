@@ -258,6 +258,108 @@ ifeq ($(OS),Darwin)
 
 endif
 
+
+ifeq ($(OS),Android)
+	# We should always specify -Wl,--build-id, as documented at:
+	# http://linux.die.net/man/1/ld and http://fedoraproject.org/wiki/Releases/FeatureBuildId.http://fedoraproject.org/wiki/Releases/FeatureBuildId
+	LDFLAGS += -Wl,--build-id
+	# Set USE_VALVE_BINDIR to build with /Steam/tools/linux in the /valve/bin path.
+	#  Dedicated server uses this.
+	ifeq ($(USE_VALVE_BINDIR),1)
+		# dedicated server flags
+		ifeq ($(TARGET_PLATFORM),android64)
+			VALVE_BINDIR = /valve/bin64/
+			MARCH_TARGET = arm
+		else
+			VALVE_BINDIR = /valve/bin/
+			MARCH_TARGET = arm
+		endif
+		STRIP_FLAGS =
+	else
+		VALVE_BINDIR =
+		ifneq "$(wildcard /valve/steam-runtime/bin/)" ""
+			ifneq ($(CXX),clang++)
+				VALVE_BINDIR = /valve/steam-runtime/bin/
+			endif
+		endif
+		GCC_VER =
+		MARCH_TARGET = arm
+		STRIP_FLAGS = -x
+	endif
+
+	ifeq ($(CXX),clang++)
+		SSE_GEN_FLAGS = -msse2
+	else
+		SSE_GEN_FLAGS = -msse2 -mfpmath=sse
+	endif
+
+	CCACHE := $(SRCROOT)/devtools/bin/linux/ccache
+
+	ifeq ($(origin GCC_VER), undefined)
+	GCC_VER=-4.6
+	endif
+	ifeq ($(origin AR), default)
+		AR = $(VALVE_BINDIR)ar crs
+	endif
+	ifeq ($(origin CC),default)
+		CC = $(CCACHE) $(VALVE_BINDIR)gcc$(GCC_VER)	
+	endif
+	ifeq ($(origin CXX), default)
+		CXX = $(CCACHE) $(VALVE_BINDIR)g++$(GCC_VER)
+	endif
+	ifeq ($(CC),clang)
+		CC = $(CCACHE) $(VALVE_BINDIR)clang -Qunused-arguments
+	endif
+	ifeq ($(CXX),clang++)
+		CXX = $(CCACHE) $(VALVE_BINDIR)clang++ -Qunused-arguments
+	endif
+	LINK ?= $(CC)
+
+	ifeq ($(TARGET_PLATFORM),android64)
+		ARCH_FLAGS += -march=$(MARCH_TARGET) -mtune=core2
+		LD_SO = ld-android-x86_64.so.2
+		LIBSTDCXX := $(shell $(CXX) -print-file-name=libstdc++.a)
+		LIBSTDCXXPIC := $(shell $(CXX) -print-file-name=libstdc++-pic.a)
+	else
+		ARCH_FLAGS += -m32 -march=$(MARCH_TARGET) -mtune=core2 $(SSE_GEN_FLAGS)
+		LD_SO = ld-android.so.2
+		LIBSTDCXX := $(shell $(CXX) $(ARCH_FLAGS) -print-file-name=libstdc++.so)
+		LIBSTDCXXPIC := $(shell $(CXX) $(ARCH_FLAGS) -print-file-name=libstdc++.so)
+		LDFLAGS += -m32
+	endif
+
+	GEN_SYM ?= $(SRCROOT)/devtools/gendbg.sh
+	ifeq ($(CFG),release)
+		STRIP ?= strip $(STRIP_FLAGS) -S
+	else
+		STRIP ?= true
+	endif
+	VSIGN ?= true
+
+	ifeq ($(SOURCE_SDK), 1)
+		Srv_GAMEOUTPUTFILE := $(GAMEOUTPUTFILE:.so=_srv.so)
+		COPY_DLL_TO_SRV := 1
+	endif
+
+	LINK_MAP_FLAGS = -Wl,-Map,$(@:.so=).map
+
+	SHLIBLDFLAGS = -shared $(LDFLAGS) -Wl,--no-undefined
+
+	_WRAP := -Xlinker --wrap=
+	PATHWRAP = $(_WRAP)fopen $(_WRAP)freopen $(_WRAP)open    $(_WRAP)creat    $(_WRAP)access  $(_WRAP)__xstat \
+		   $(_WRAP)stat  $(_WRAP)lstat   $(_WRAP)fopen64 $(_WRAP)open64   $(_WRAP)opendir $(_WRAP)__lxstat \
+		   $(_WRAP)chmod $(_WRAP)chown   $(_WRAP)lchown  $(_WRAP)symlink  $(_WRAP)link    $(_WRAP)__lxstat64 \
+		   $(_WRAP)mknod $(_WRAP)utimes  $(_WRAP)unlink  $(_WRAP)rename   $(_WRAP)utime   $(_WRAP)__xstat64 \
+		   $(_WRAP)mount $(_WRAP)mkfifo  $(_WRAP)mkdir   $(_WRAP)rmdir    $(_WRAP)scandir $(_WRAP)realpath
+
+	LIB_START_EXE = $(PATHWRAP) -static-libgcc -Wl,--start-group
+	LIB_END_EXE = -Wl,--end-group -lm -ldl $(LIBSTDCXX) -lpthread 
+
+	LIB_START_SHLIB = $(PATHWRAP) -static-libgcc -Wl,--start-group
+	LIB_END_SHLIB = -Wl,--end-group -lm -ldl $(LIBSTDCXXPIC) -lpthread -l:$(LD_SO) -Wl,--version-script=$(SRCROOT)/devtools/version_script.linux.txt
+
+endif
+
 #
 # Profile-directed optimizations.
 # Note: Last time these were tested 3/5/08, it actually slowed down the server benchmark by 5%!
