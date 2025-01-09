@@ -25,58 +25,49 @@
 #LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #SOFTWARE.
+SRCDIR=../
+INSTALLDIR=${SRCDIR}/lib/public/android
+mkdir -p ${INSTALLDIR}
+SRC4DROID_HOST=arm-linux-androideabi
+BUILD=linux-x86_64
+NDK_DIR=/mnt/f/soft/android-ndk-r10e
+TOOLCHAIN_VERSION=4.9
+DRIOD_SYSROOT=${NDK_DIR}/platforms/android-21/arch-arm
+CFLAGS=--sysroot=${DRIOD_SYSROOT}
+CPPFLAGS=--sysroot=${DRIOD_SYSROOT}
+AR=${SRC4DROID_HOST}-ar
+RANLIB=${SRC4DROID_HOST}-ranlib
+PATH=${NDK_DIR}/toolchains/${SRC4DROID_HOST}-${TOOLCHAIN_VERSION}/prebuilt/${BUILD}/bin:$PATH
 
-OS=`uname`
+android_chrooted_install() {
+  cp $1 ../lib/public/android
+}
 
-if [ $OS == Linux; ] then
-    SRCDIR=../
-    INSTALLDIR=${SRCDIR}/lib/public/android
-    mkdir -p ${INSTALLDIR}
-    SRC4DROID_HOST=arm-linux-androideabi
-    BUILD=linux-x86_64
-    NDK_DIR=/mnt/f/soft/android-ndk-r10e
-    TOOLCHAIN_VERSION=4.9
-    DRIOD_SYSROOT=${NDK_DIR}/platforms/android-21/arch-arm
-    CFLAGS=--sysroot=${DRIOD_SYSROOT}
-    CPPFLAGS=--sysroot=${DRIOD_SYSROOT}
-    AR=${SRC4DROID_HOST}-ar
-    RANLIB=${SRC4DROID_HOST}-ranlib
-    PATH=${NDK_DIR}/toolchains/${SRC4DROID_HOST}-${TOOLCHAIN_VERSION}/prebuilt/${BUILD}/bin:$PATH
+android_chrooted_make() {
+  make "$@" -j$(nproc --all) NDK=1 NDK_ABI=armeabi-v7a NDK_PATH=${NDK_DIR}
+}
 
-    android_chrooted_install() {
-      cp $1 ../lib/public/android
-    }
+cd thirdparty/
 
-    android_chrooted_make() {
-      make "$@" -j$(nproc --all) NDK=1 NDK_ABI=armeabi-v7a NDK_PATH=${NDK_DIR}
-    }
+cd StubSteamAPI/
+android_chrooted_make
+android_chrooted_install libsteam_api.so 
+cd ../
 
-    cd thirdparty/
+cd libiconv-1.15/
+./configure --host=$SRC4DROID_HOST --with-sysroot=$SYSROOT --enable-static
+android_chrooted_make
+android_chrooted_install lib/.libs/libiconv.a
+cd ../
 
-    cd StubSteamAPI/
-    android_chrooted_make
-    android_chrooted_install libsteam_api.so 
-    cd ../
+cd libjpeg/
+conf ./configure --host=$SRC4DROID_HOST --with-sysroot=$SYSROOT
+android_chrooted_make
+cp .libs/libjpeg.a ../../lib/common/androidarm32
+android_chrooted_install .libs/libjpeg.a
+cd ../
 
-    cd libiconv-1.15/
-    ./configure --host=$SRC4DROID_HOST --with-sysroot=$SYSROOT --enable-static
-    android_chrooted_make
-    android_chrooted_install lib/.libs/libiconv.a
-    cd ../
-
-    cd libjpeg/
-    conf ./configure --host=$SRC4DROID_HOST --with-sysroot=$SYSROOT
-    android_chrooted_make
-    cp .libs/libjpeg.a ../../lib/common/androidarm32
-    android_chrooted_install .libs/libjpeg.a
-    cd ../
-
-    cd ../ # Do not use SRCDIR because it just breaks everything.
-    pushd `dirname $0`
-    devtools/bin/vpc /hl2 +game /mksln game /ANDROID64
-    popd
-    mv ~/.bashrc-replace ~/.bashrc
-else
-    echo "OS is unsupported."
-    exit 1
-fi
+cd ../ # Do not use SRCDIR because it just breaks everything.
+pushd `dirname $0`
+devtools/bin/vpc /hl2 +game /mksln game /ANDROID64
+popd
