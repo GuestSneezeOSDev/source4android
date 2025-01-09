@@ -26,7 +26,9 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #SOFTWARE.
 
-if uname == Linux; then
+OS=`uname`
+
+if [ $OS == Linux; ] then
     SRCDIR=../
     INSTALLDIR=${SRCDIR}/lib/public/android
     mkdir -p ${INSTALLDIR}
