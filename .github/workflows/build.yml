@@ -6,7 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    - uses: actions/checkout@v2
     steps:
       - name: Change directory.
         run: cd $GITHUB_WORKSPACE/src
@@ -14,5 +13,5 @@ jobs:
         run: sudo apt install gcc-multilib g++-multilib
       - name: Give permissions.
         run: chmod a+x buildandroid.sh && chmod a+x devtools/bin/vpc
-      -name: Build.
+      - name: Build.
         run: ./buildandroid.sh
