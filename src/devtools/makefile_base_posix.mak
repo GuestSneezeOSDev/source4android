@@ -282,7 +282,7 @@ ifeq ($(OS),Android)
 				VALVE_BINDIR = /valve/steam-runtime/bin/
 			endif
 		endif
-		GCC_VER = 4.9
+		GCC_VER = 
 		MARCH_TARGET = arm
 		STRIP_FLAGS = -x
 	endif
