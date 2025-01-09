@@ -15,17 +15,8 @@ sudo pacman -S base-devel gcc dpkg
 sudo apt-get install gcc-multilib g++-multilib # For x86_64
 sudo apt-get install build-essential # For x86/i386
 ```
-You will need to Install Steam Client Runtime heres a few commands how, also change <USER> with your username and <GROUP> with your group.
-```bash
-cd /
-sudo mkdir valve
-cd valve
-sudo wget https://media.steampowered.com/client/runtime/steam-runtime-sdk_latest.tar.xz
-sudo tar xvf steam-runtime-sdk_latest.tar.xz
-sudo mv steam-runtime-sdk_2013-09-05 steam-runtime
-sudo chown <USER>:<GROUP> * -R
-./shell.sh --arch=arm # I will create a repo which adds arm support later.
-```
+Download the Steam Client Runtime and copy the files from this repo to there.
+<br>
 Now you will need to run the `buildandroid.sh` file located in `src/` directory.
 ```bash
 cd source4android/src/
