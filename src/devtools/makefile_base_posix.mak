@@ -13,7 +13,7 @@
 #  @	command is not printed to stdout before being executed
 #  +	command is executed even if Make is invoked in "do not exec" mode
 # 
-# !!!!! Note to Source4Droid user !!!!!
+# !!!!! Note to Source4Droid user's !!!!!
 # 
 # The builds have not been tested yet. So if you do have any issues please report it to GitHub. - 1/9/2025
 
