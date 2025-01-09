@@ -22,10 +22,13 @@ esac
 
 
 if [ $OS == "Darwin" ]; then
+	chmod $SCRIPTPATH/$BINNAME $@
 	$SCRIPTPATH/$BINNAME $@
 elif [ $OS == "Linux" ]; then
+	chmod $SCRIPTPATH/$BINNAME $@
 	$SCRIPTPATH/$BINNAME $@
 elif [ $OS == "Android" ]; then
+	chmod $SCRIPTPATH/$BINNAME $@
 	$SCRIPTPATH/$BINNAME $@
 else
 	echo "Couldn't find appropriate VPC binary, fix the script."
