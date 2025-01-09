@@ -25,4 +25,5 @@ then you do not have enough diskspace. Clear some storage [Guide for Debian.](ht
 - GuestSneezeOSDev: Created most of the stuff used in the mod such as the build scripts
 - nillerusr: The touch support was used from his repository which uses leaked code so I will not be able to link it.
 - Valve: Source SDK 2013 base code.
-- XutaxKamay for the https://github.com/ValveSoftware/source-sdk-2013/pull/590 pull request which was used.
+- XutaxKamay: For the swept ray box fixes.
+- sortie: Linux ports of VRAD, VVIS, and VBSP.
