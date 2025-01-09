@@ -1,6 +1,9 @@
 #!/bin/bash
 # COPYRIGHT SOURCE4DROID, ALL RIGHTS RESERVED
 # IF YOU PLAN ON USING THE SOURCE4ANDROID PROJECT THEN YOU MUST ACCEPT THE MiT License aka Credit GuestSneezeOSDev if you plan on using it.
+#
+# ==== LICENSE ====
+#
 # MIT License
 #
 #Copyright (c) 2025 Mohamed
