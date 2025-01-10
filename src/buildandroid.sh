@@ -30,7 +30,6 @@ INSTALLDIR=${SRCDIR}/lib/public/android
 mkdir -p ${INSTALLDIR}
 SRC4DROID_HOST=arm-linux-androideabi
 BUILD=linux-x86_64
-NDK_DIR=/mnt/f/soft/android-ndk-r10e
 TOOLCHAIN_VERSION=4.9
 DRIOD_SYSROOT=${NDK_DIR}/platforms/android-21/arch-arm
 CFLAGS=--sysroot=${DRIOD_SYSROOT}
@@ -38,6 +37,12 @@ CPPFLAGS=--sysroot=${DRIOD_SYSROOT}
 AR=${SRC4DROID_HOST}-ar
 RANLIB=${SRC4DROID_HOST}-ranlib
 PATH=${NDK_DIR}/toolchains/${SRC4DROID_HOST}-${TOOLCHAIN_VERSION}/prebuilt/${BUILD}/bin:$PATH
+
+#Install the NDK
+wget https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip -o /dev/null
+tar -xf android-ndk-r10e-linux-x86_64.zip
+export ANDROID_NDK_HOME=$PWD/android-ndk-r10e/
+export NDK_DIR=$PWD/android-ndk-r10e/
 
 android_chrooted_install() {
   cp $1 ../lib/public/android
