@@ -56,6 +56,7 @@ $Configuration
 		$PreprocessorDefinitions		"$BASE;ENABLE_CHROMEHTMLWINDOW;fopen=dont_use_fopen" [$WIN32]
 		$PreprocessorDefinitions		"$BASE;ENABLE_CHROMEHTMLWINDOW;" [$OSXALL]
 		$PreprocessorDefinitions		"$BASE;ENABLE_CHROMEHTMLWINDOW;USE_WEBM_FOR_REPLAY;" [$LINUXALL]
+		$PreprocessorDefinitions		"$BASE;ENABLE_CHROMEHTMLWINDOW;USE_WEBM_FOR_REPLAY;" [$ANDROID64]
 		$PreprocessorDefinitions		"$BASE;CURL_STATICLIB" [$WIN32 && $BUILD_REPLAY]
 		$Create/UsePrecompiledHeader	"Use Precompiled Header (/Yu)"
 		$Create/UsePCHThroughFile		"cbase.h"
@@ -67,6 +68,7 @@ $Configuration
 		$SystemLibraries				"iconv" [$OSXALL]
 		$SystemFrameworks				"Carbon" [$OSXALL]
 		$SystemLibraries				"rt" [$LINUXALL]
+		$SystemLibraries				"rt" [$ANDROID64]
 		$IgnoreImportLibrary			"TRUE"
 		$AdditionalDependencies			"$BASE winmm.lib"	[$WIN32]
 		$AdditionalDependencies			"$BASE wsock32.lib Ws2_32.lib" [$BUILD_REPLAY]
@@ -659,7 +661,7 @@ $Project
 
 	}
 
-	$Folder	"MP3" [$WIN32||$POSIX]
+	$Folder	"MP3" [$WIN32||$POSIX||$ANDROID64]
 	{
 		$File	"mp3player.cpp"
 		$File	"mp3player.h"
@@ -1253,17 +1255,17 @@ $Project
 		$Lib		vtf
 		$ImpLib		steam_api
 		
-		$Lib $LIBCOMMON/libcrypto [$POSIX]
+		$Lib $LIBCOMMON/libcrypto [$POSIX||$ANDROID64]
 
 		$ImpLib	"$LIBCOMMON\curl"	  [$OSXALL]
 
 		$Lib	"$LIBCOMMON\libcurl" [$WIN32]
 		$Lib   "libz" [$WIN32]
 
-		$Libexternal	libz [$LINUXALL]
-		$Libexternal "$LIBCOMMON/libcurl" [$LINUXALL]
-		$Libexternal "$LIBCOMMON/libcurlssl" [$LINUXALL]
-		$Libexternal "$LIBCOMMON/libssl" [$LINUXALL]
+		$Libexternal	libz [$LINUXALL]||$ANDROID64
+		$Libexternal "$LIBCOMMON/libcurl" [$LINUXALL||$ANDROID64]
+		$Libexternal "$LIBCOMMON/libcurlssl" [$LINUXALL||$ANDROID64]
+		$Libexternal "$LIBCOMMON/libssl" [$LINUXALL||$ANDROID64]
  	}
 
 }

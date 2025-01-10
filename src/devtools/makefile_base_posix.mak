@@ -283,7 +283,7 @@ ifeq ($(OS),Android)
 			endif
 		endif
 		GCC_VER = 
-		MARCH_TARGET = arm
+		MARCH_TARGET = 
 		STRIP_FLAGS = -x
 	endif
 
@@ -293,7 +293,7 @@ ifeq ($(OS),Android)
 		SSE_GEN_FLAGS = -msse2 -mfpmath=sse
 	endif
 
-	CCACHE := $(SRCROOT)/devtools/bin/linux/ccache
+	CCACHE := $(SRCROOT)/devtools/bin/android/ccache
 
 	ifeq ($(origin GCC_VER), undefined)
 	GCC_VER=-4.6
@@ -356,8 +356,7 @@ ifeq ($(OS),Android)
 	LIB_END_EXE = -Wl,--end-group -lm -ldl $(LIBSTDCXX) -lpthread 
 
 	LIB_START_SHLIB = $(PATHWRAP) -static-libgcc -Wl,--start-group
-	LIB_END_SHLIB = -Wl,--end-group -lm -ldl $(LIBSTDCXXPIC) -lpthread -l:$(LD_SO) -Wl,--version-script=$(SRCROOT)/devtools/version_script.linux.txt
-
+	LIB_END_SHLIB = -Wl,--end-group -lm -ldl $(LIBSTDCXXPIC) -lpthread -l:$(LD_SO) -Wl,--version-script=$(SRCROOT)/devtools/version_script.android.txt
 endif
 
 #
