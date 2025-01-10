@@ -70,7 +70,7 @@ WARN_FLAGS += -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-value -Wno-
 
 ifeq ($(OS),Linux)
 	# We should always specify -Wl,--build-id, as documented at:
-	# http://linux.die.net/man/1/ld and http://fedoraproject.org/wiki/Releases/FeatureBuildId.http://fedoraproject.org/wiki/Releases/FeatureBuildId
+	# http://linux.die.net/man/1/ld and http://fedoraproject.org/wiki/Releases/FeatureBuildId
 	LDFLAGS += -Wl,--build-id
 	# Set USE_VALVE_BINDIR to build with /Steam/tools/linux in the /valve/bin path.
 	#  Dedicated server uses this.

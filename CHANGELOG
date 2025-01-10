@@ -5,3 +5,5 @@
 - Added Improvements for buildandroid.sh
 - Merged the old src4droid.sh file in thirdparty with the new & improved buildandroid.sh
 - Linux ports of VBSP, VRAD, VVIS.
+- Added Android ccache file/alternative to Linux cchache file.
+- 

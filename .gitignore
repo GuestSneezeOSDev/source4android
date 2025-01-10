@@ -4,5 +4,6 @@ src*/*.vcxproj
 *.exe
 *.sln
 *.dll
-# Android/Linux stuff.
+# Posix stuff.
 *.so
+*.o
