@@ -1,9 +1,8 @@
 # Source4android
 > [!CAUTION]
-> Please do not use this as its not complete yet, please proceed with caution.
+> Please do not use this as its not complete yet, please proceed with caution. (Some leaked code will be used in future updates, but not entirely.)
 
 Source4Android is an open-source, base mod for Half-Life 2 which allows players to port their mods to Android and Android-based systems without using any leaked code.
-
 # How to build.
 Firstly, you will need to install build dependencies[[1]](https://developer.valvesoftware.com/wiki/Source_SDK_2013#Step_One:_Getting_the_basic_C/C++_development_tools), here are the required packages.
 - If you're on Arch Linux or any pacman-based run
