@@ -89,11 +89,11 @@ ifeq ($(OS),Linux)
 		VALVE_BINDIR =
 		# If the steam-runtime is available, use it. We should just default to using it when
 		#  buildbot and everyone has a bit of time to get it installed.
-		ifneq "$(wildcard /valve/steam-runtime/bin/)" ""
+		ifneq "$(wildcard ../../../steam-runtime-sdk/bin/)" ""
 			# The steam-runtime is incompatible with clang at this point, so disable it
 			# if clang is enabled.
 			ifneq ($(CXX),clang++)
-				VALVE_BINDIR = /valve/steam-runtime/bin/
+				VALVE_BINDIR = ../../../steam-runtime-sdk//bin/
 			endif
 		endif
 		GCC_VER =
@@ -277,9 +277,9 @@ ifeq ($(OS),Android)
 		STRIP_FLAGS =
 	else
 		VALVE_BINDIR =
-		ifneq "$(wildcard /valve/steam-runtime/bin/)" ""
+		ifneq "$(wildcard ../../../steam-runtime-sdk/bin/)" ""
 			ifneq ($(CXX),clang++)
-				VALVE_BINDIR = /valve/steam-runtime/bin/
+				VALVE_BINDIR = ../../../steam-runtime-sdk/bin/
 			endif
 		endif
 		GCC_VER = 
