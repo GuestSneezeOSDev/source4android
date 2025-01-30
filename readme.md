@@ -27,8 +27,7 @@ make -f [MAKEFILE].mak
 ```
 
 # Mods using Source4Android
-- HL2 ReCharged → https://www.moddb.com/mods/half-life-2-overcharged-redux
-- HL2 Rebuild → https://www.moddb.com/mods/half-life-2-rebuild1
+- HL2 ReCharged → https://www.moddb.com/mods/hl2-recharged
 
 # Troubleshooting
 if you get this output:
